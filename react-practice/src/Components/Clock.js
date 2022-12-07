@@ -3,7 +3,7 @@ import React from "react";
 class Clock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), timer: 5 };
+    this.state = { date: new Date(), timer: Math.ceil(Math.random() * 10) };
   }
 
   componentDidMount() {
@@ -20,18 +20,26 @@ class Clock extends React.Component {
         timer: "boom",
       });
     } else if (this.state.timer > 0) {
-      this.setState({
-        date: new Date(),
-        timer: (this.state.timer -= 1),
-      });
+      this.setState((state) => ({
+        timer: state.timer - 1,
+      }));
     }
   }
+
+  cancelCountdown = () => {
+    if (this.state.timer !== "boom") {
+      this.setState({
+        timer: "cancelled",
+      });
+    }
+  };
 
   render() {
     return (
       <div>
         <h1>Hello, world!</h1>
         <h2>{this.state.timer.toString()}.</h2>
+        <button onClick={this.cancelCountdown}>Cancel Countdown</button>
         {/* <h2>It is {this.state.date.toLocaleTimeString()}.</h2> */}
       </div>
     );
