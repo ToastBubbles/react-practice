@@ -1,9 +1,13 @@
 import React from "react";
 
+// Components must be capitolized
+// returning JSX requires ( /../ ) parenthesis
+
 class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = { date: new Date(), timer: Math.ceil(Math.random() * 10) };
+    this.cancelCountdown = this.cancelCountdown.bind(this); //alternate listener
   }
 
   componentDidMount() {
@@ -26,13 +30,13 @@ class Clock extends React.Component {
     }
   }
 
-  cancelCountdown = () => {
+  cancelCountdown() {
     if (this.state.timer !== "boom") {
       this.setState({
         timer: "cancelled",
       });
     }
-  };
+  }
 
   render() {
     return (
