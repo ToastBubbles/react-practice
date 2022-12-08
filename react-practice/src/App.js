@@ -1,12 +1,10 @@
-import Clock from "./Components/Clock";
+import ClockMapper from "./Components/ClockMapper";
 import "./App.css";
 
 function App() {
   return (
     <div>
-      <Clock />
-      <Clock />
-      <Clock />
+      <ClockMapper />
     </div>
   );
 }
